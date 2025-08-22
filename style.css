@@ -1,0 +1,443 @@
+body {
+    background-color: #f0f4f8;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #ffffff 0%, #e6f0f8 100%);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.08);
+}
+
+.card-header {
+    background: linear-gradient(145deg, #4a90e2 0%, #6bb5ff 100%);
+    border-bottom: none;
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1.5rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+}
+
+.card-header h2 {
+    color: #ffffff;
+    margin: 0;
+    font-weight: 500;
+    position: relative;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    background: linear-gradient(165deg, #ffffff 0%, #e6f0f8 100%);
+    border-radius: 0 0 15px 15px;
+    padding: 1.5rem;
+}
+
+.history-container {
+    max-height: 700px;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.history-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.history-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 4px;
+}
+
+.history-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.3);
+}
+
+.history-item {
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8faff 100%);
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    transition: all 0.2s ease;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.history-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.15);
+    background: linear-gradient(145deg, #f8faff 0%, #f0f7ff 100%);
+}
+
+.btn-group .btn {
+    margin-left: 5px;
+}
+
+footer {
+    padding: 30px;
+    color: #64748b;
+}
+
+footer a {
+    color: #64748b;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: #334155;
+    text-decoration: none;
+}
+
+#audio {
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid rgba(74, 144, 226, 0.15);
+    transition: all 0.2s ease;
+    background: #ffffff;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #6bb5ff;
+    box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.12);
+    background: #ffffff;
+}
+
+.btn {
+    transition: all 0.2s ease;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+}
+
+.btn-primary:hover {
+    background-color: #357ab8;
+    border-color: #357ab8;
+}
+
+.btn-info {
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+}
+
+.btn-info:hover {
+    background-color: #31b0d5;
+    border-color: #31b0d5;
+}
+
+.btn-success {
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+.btn-success:hover {
+    background-color: #4cae4c;
+    border-color: #4cae4c;
+}
+
+.alert {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#loading {
+    color: #6366f1;
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.btn-warning {
+    background: linear-gradient(145deg, #fbbf24 0%, #f59e0b 100%);
+    border: none;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(145deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+/* 添加按钮点击反馈效果 */
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* 优化表单控件悬停状态 */
+.form-control:hover {
+    border-color: rgba(74, 144, 226, 0.3);
+}
+
+/* 添加悬浮提示框样式 */
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+    max-width: 300px;
+}
+
+.toast {
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+.toast-body {
+    padding: 1rem;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.toast-danger {
+    background: linear-gradient(145deg, #ef4444 0%, #dc2626 100%);
+    color: #ffffff !important;
+}
+
+.toast-warning {
+    background: linear-gradient(145deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff !important;
+}
+
+.toast-info {
+    background: linear-gradient(145deg, #3b82f6 0%, #2563eb 100%);
+    color: #ffffff !important;
+}
+
+.toast-success {
+    background-color: #d4edda;
+    color: #ffffff !important;
+    background: linear-gradient(145deg, #10b981 0%, #059669 100%);
+}
+
+.toast-loading {
+    background-color: #fff;
+    color: #ffffff !important;
+    background: linear-gradient(145deg, #6366f1 0%, #4f46e5 100%);
+    border: 1px solid #e5e7eb;
+}
+
+/* Loading overlay */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+#loadingOverlay .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: #6366f1;
+}
+
+/* 自定义API管理相关样式 */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    max-width: 350px;
+}
+
+.toast {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+.toast-body {
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.toast-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.toast-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.toast-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.toast-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.toast-loading {
+    background-color: #fff;
+    color: #212529;
+    border: 1px solid #dee2e6;
+}
+
+/* 改进历史记录项目样式 */
+.history-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.history-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* 进度条样式 */
+.progress {
+    height: 8px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+    background-color: #007bff;
+}
+
+/* API 管理模态框改进 */
+#apiManagerModal .modal-dialog {
+    max-width: 700px;
+}
+
+#savedApisList .list-group-item {
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+#savedApisList .list-group-item:hover {
+    border-left-color: #007bff;
+    background-color: #f8f9fa;
+}
+
+.api-selection-tools {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* 改进表单元素样式 */
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* 按钮悬停动画 */
+.btn {
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* 响应式改进 */
+@media (max-width: 768px) {
+    .toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    #savedApisList .list-group-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #savedApisList .list-group-item .btn-group {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+}
