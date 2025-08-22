@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 核心SEO标签 -->
+    <title>文本转语音 | 免费在线TTS转换工具 - LibreTTS</title>
+    <meta name="description" content="LibreTTS 是一款免费的在线文本转语音工具，支持多种声音选择，可调节语速和语调，提供即时试听和下载功能。快速将文字转换成自然流畅的语音。LibreTTS是免费的文本转语音工具，提供语音合成服务，支持多种语言，包括英语、法语、德语、西班牙语、阿拉伯语、中文、日语、朝鲜语、粤语、越南语等，以及多种语音风格，提供丰富的讲述人。LibreTTS is an online text-to-speech tool, also known as a voice generator, it can convert text to audio, and you can play or download audio files. Free online text-to-speech converter supporting multiple voices, adjustable speed and pitch, with instant preview and download features.">
+    <meta name="keywords" content="文本转语音,TTS,语音合成,在线配音,OpenAI 文本转语音,OpenAI,AI,讲述人,FREE TTS,文字转语音,语音生成器,AI配音,免费TTS,在线朗读,文案工具">
+    <meta name="author" content="Zwei">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://libretts.is-an.org/">
+    
+    <!-- Open Graph标签增强 -->
+    <meta property="og:title" content="文本转语音 | 免费在线TTS转换工具 - LibreTTS">
+    <meta property="og:description" content="LibreTTS 是一款免费的在线文本转语音工具，支持多种声音选择，可调节语速和语调，提供即时试听和下载功能。快速将文字转换成自然流畅的语音。LibreTTS是免费的文本转语音工具，提供语音合成服务，支持多种语言，包括英语、法语、德语、西班牙语、阿拉伯语、中文、日语、朝鲜语、粤语、越南语等，以及多种语音风格，提供丰富的讲述人。LibreTTS is an online text-to-speech tool, also known as a voice generator, it can convert text to audio, and you can play or download audio files. Free online text-to-speech converter supporting multiple voices, adjustable speed and pitch, with instant preview and download features.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://libretts.is-an.org/">
+    <meta property="og:image" content="https://libretts.is-an.org/image/TTS.png">
+    <meta property="og:site_name" content="LibreTTS">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card标签增强 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="文本转语音 | 免费在线TTS转换工具 - LibreTTS">
+    <meta name="twitter:description" content="LibreTTS是一款免费的在线文本转语音工具,支持多种声音选择,可调节语速和语调,提供即时试听和下载功能。">
+    <meta name="twitter:image" content="https://libretts.is-an.org/image/TTS.png">
+    
+    <!-- 其他原有标签 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/png" href="image/TTS.png">
+    <link rel="apple-touch-icon" href="image/TTS.png">
+    <link rel="shortcut icon" type="image/png" href="image/TTS.png">
+
+    <!-- 建议添加预加载关键资源 -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Umami Analytics -->
+    <script defer src="https://umami.zwei.de.eu.org/script.js" data-website-id="70106ca4-d1e5-4563-b574-ba09c3b5db16"></script>
+</head>
+<body>
+    <!-- 新增：密码验证弹窗 -->
+    <div id="passwordModal" class="modal" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1000;">
+        <div class="modal-dialog" style="max-width: 400px; margin: 15% auto;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">请输入访问密码</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="password" id="passwordInput" class="form-control" placeholder="密码">
+                    <div id="passwordError" class="alert alert-danger mt-2" style="display:none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="passwordSubmit" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "LibreTTS - 文本转语音工具",
+        "url": "https://libretts.is-an.org/",
+        "description": "免费在线文本转语音工具,支持多种声音选择,可调节语速和语调,提供即时试听和下载功能。",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Zwei"
+        }
+    }
+    </script>
+
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5" style="min-height: 90vh;">
+        <div class="row w-100 justify-content-center g-4">
+            <!-- 表单容器 -->
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5 mb-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header text-center">
+                        <h2>文本转语音</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="text2voice-form">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="api">选择API：</label>
+                                    <div class="input-group">
+                                        <select class="form-control" id="api" required>
+                                            <option value="edge-api">Edge API</option>
+                                            <!-- 自定义API选项将通过JS动态添加 -->
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="manageApiBtn">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <small id="apiTips" class="form-text text-muted"></small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="speaker">选择语音：</label>
+                                    <select class="form-control" id="speaker" required>
+                                        <option value="">加载中...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <label for="text">输入文本：</label>
+                                    <div id="pauseControls" class="input-group" style="width: auto;">
+                                        <input type="number"
+                                               class="form-control form-control-sm"
+                                               id="pauseSeconds"
+                                               min="0.01"
+                                               max="100"
+                                               step="0.01"
+                                               style="width: 80px;"
+                                               placeholder="秒数">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-sm btn-outline-secondary" type="button" id="insertPause">
+                                                插入停顿
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <textarea
+                                    class="form-control"
+                                    id="text"
+                                    rows="4"
+                                    required
+                                    maxlength="100000"></textarea>
+                                <small id="charCount" class="form-text text-muted">0% (0/100000单位)</small>
+                            </div>
+
+                            <!-- OAI-TTS专用设置 -->
+                            <div id="instructionsContainer" class="form-group" style="display: none;">
+                                <label for="instructions">语音指令（可选）：</label>
+                                <input type="text" class="form-control" id="instructions" 
+                                    placeholder="如：请用欢快和兴奋的语气说话">
+                                <small class="form-text text-muted">可用于指导语音情感、语气或风格</small>
+                            </div>
+
+                            <div id="formatContainer" class="form-group" style="display: none;">
+                                <label for="audioFormat">音频格式：</label>
+                                <select class="form-control" id="audioFormat">
+                                    <option value="mp3">MP3</option>
+                                    <option value="opus">Opus</option>
+                                    <option value="aac">AAC</option>
+                                    <option value="flac">FLAC</option>
+                                    <option value="wav">WAV</option>
+                                    <option value="pcm">PCM</option>
+                                </select>
+                            </div>
+
+                            <!-- 其他API使用的语速语调设置 -->
+                            <div id="rateContainer" class="form-group">
+                                <label for="rate">语速: <span id="rateValue">0</span></label>
+                                <input type="range" class="form-control-range" id="rate" name="rate" min="-100" max="100" value="0">
+                            </div>
+
+                            <div id="pitchContainer" class="form-group">
+                                <label for="pitch">语调: <span id="pitchValue">0</span></label>
+                                <input type="range" class="form-control-range" id="pitch" name="pitch" min="-100" max="100" value="0">
+                            </div>
+
+                            <div id="error" class="alert alert-danger" style="display: none;"></div>
+
+                            <button type="button" class="btn btn-info btn-block mb-3" id="previewButton">试听前20个字</button>
+                            <button type="button" class="btn btn-primary btn-block" id="generateButton">生成语音</button>
+                        </form>
+
+                        <div class="mt-4" id="result">
+                            <audio id="audio" controls class="w-100"></audio>
+                            <a id="download" class="btn btn-success btn-block mt-3" href="#" download="voice.mp3">下载语音文件</a>
+                        </div>
+
+                        <div class="mt-4 text-center" id="loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> 正在生成语音，请稍候...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 历史记录容器 -->
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5 mb-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header text-center">
+                        <h2>历史记录</h2>
+                    </div>
+                    <div class="card-body history-container">
+                        <button onclick="clearHistory()" class="btn btn-warning btn-block mb-3">清除历史</button>
+                        <div id="historyItems"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加自定义API管理弹窗 -->
+    <div class="modal fade" id="apiManagerModal" tabindex="-1" role="dialog" aria-labelledby="apiManagerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apiManagerModalLabel">管理自定义API</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> 您可以添加自定义的TTS API。支持两种格式：OpenAI格式和Edge API格式。
+                    </div>
+                    
+                    <form id="customApiForm">
+                        <div class="form-group">
+                            <label for="apiName">API名称 <small class="text-muted">(显示在下拉菜单中)</small></label>
+                            <input type="text" class="form-control" id="apiName" placeholder="例如: 我的自定义API" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apiFormat">API格式</label>
+                            <select id="apiFormat" class="form-control">
+                                <option value="openai">OpenAI 格式</option>
+                                <option value="edge">Edge API 格式</option>
+                            </select>
+                            <small class="form-text text-muted">选择您的API所使用的格式，这将影响请求的参数格式</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="apiEndpoint">API端点URL</label>
+                            <input type="url" class="form-control" id="apiEndpoint" placeholder="https://api.example.com/v1/audio/speech" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apiKey">API密钥 <small class="text-muted">(可选)</small></label>
+                            <input type="password" class="form-control" id="apiKey" placeholder="sk-...">
+                            <small class="form-text text-muted">对于OpenAI格式，使用Bearer Token；对于Edge API格式，可以使用"x-api-key: 值"或Bearer Token</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelEndpoint">模型列表端点 <small class="text-muted">(用于获取可用的模型/讲述人)</small></label>
+                            <div class="input-group">
+                                <input type="url" class="form-control" id="modelEndpoint" placeholder="https://api.example.com/v1/models">
+                                <div class="input-group-append">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" id="fetchModelsBtn">获取模型</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="manualSpeakers">自定义讲述人列表 <small class="text-muted">(逗号分隔)</small></label>
+                            <textarea id="manualSpeakers" class="form-control" rows="2" placeholder="voice1,voice2,voice3"></textarea>
+                            <small class="form-text text-muted">如果无法自动获取模型，您可以手动输入讲述人列表</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxLength">最大请求长度</label>
+                            <input type="number" id="maxLength" class="form-control" placeholder="例如: 5000">
+                            <small class="form-text text-muted">此 API 文本最大字符数限制，留空表示使用默认限制</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="enableSegmentation">长文本处理</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="enableSegmentation" checked>
+                                <label class="form-check-label" for="enableSegmentation">
+                                    启用自动分段（超出长度限制时将文本分段处理）
+                                </label>
+                            </div>
+                            <small class="form-text text-muted">关闭后，超长文本将被截断而不是分段</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">保存API</button>
+                    </form>
+                    
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="mb-0">已保存的自定义API</h6>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" id="exportApisBtn" title="导出所有自定义API配置">
+                                <i class="fas fa-file-export"></i> 导出
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" id="importApisBtn" title="导入自定义API配置">
+                                <i class="fas fa-file-import"></i> 导入
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-danger" id="batchDeleteBtn" style="display:none">
+                                <i class="fas fa-trash-alt"></i> 批量删除
+                            </button>
+                        </div>
+                    </div>
+                    <div class="api-selection-tools mb-2" style="display:none">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="selectAllApis">
+                                <label class="form-check-label" for="selectAllApis">全选</label>
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-danger" id="deleteSelectedBtn">删除选中</button>
+                                <button class="btn btn-sm btn-secondary" id="cancelSelectionBtn">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="savedApisList" class="list-group mt-3">
+                        <!-- 动态加载已保存的API -->
+                    </div>
+                    
+                    <!-- 隐藏的文件输入用于导入 -->
+                    <input type="file" id="importApisInput" accept=".json" style="display:none">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-3 mt-3" style="background-color: #f8f9fa; font-size: 0.9rem;">
+        <p class="mb-1">
+            <a href="https://github.com/LibreSpark/LibreTTS" target="_blank">Code</a>
+        </p>
+    </footer>
+
+    <!-- 在现有脚本引用前加入密码验证逻辑 -->
+    <script>
+        // 检查是否需要密码
+        fetch('/api/check-password')
+            .then(res => res.json())
+            .then(data => {
+                if (data.requirePassword && localStorage.getItem('authenticated') !== 'true') {
+                    document.getElementById('passwordModal').style.display = 'block';
+                }
+            })
+            .catch(err => {
+                console.error('检查密码需求失败', err);
+            });
+            
+        document.getElementById('passwordSubmit').addEventListener('click', function() {
+            const passValue = document.getElementById('passwordInput').value;
+            fetch('/api/verify-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: passValue })
+            })
+            .then(res => {
+                if (res.status === 200) return res.json();
+                else throw new Error('密码错误');
+            })
+            .then(result => {
+                if (result.valid) {
+                    localStorage.setItem('authenticated', 'true');
+                    document.getElementById('passwordModal').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                const errBox = document.getElementById('passwordError');
+                errBox.style.display = 'block';
+                errBox.innerText = error.message;
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
